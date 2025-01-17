@@ -43,8 +43,6 @@ professional_writer_agent = Agent(
         """
     ),
     tools=[],
-    allow_delegation=False,
     llm=llm,
     max_rpm=10,
-    verbose=True
-)
+    )
