@@ -2,6 +2,7 @@ from crewai import Crew,Process
 from crewai_tools import SerperDevTool
 from dotenv import load_dotenv
 from tools import pdf_tool,search_tool,llm
+from tasks import answer_customer_question_task,write_email_task
 from agents import reader_agent, search_agent, professional_writer_agent
 from fastapi import FastAPI, File, UploadFile, Form
 from pydantic import BaseModel
@@ -37,14 +38,27 @@ async def process_query(
     Returns:
     - The result from the Crew process.
     """
+    current_path = os.getcwd()  # Always returns a valid string
+    file_name = file.filename
+
+    # Validate file_name
+    if not file_name:
+        return {
+            "success": False,
+            "error": "No file name provided. Please upload a valid file."
+        }
+
+    # Construct the file path
+    file_path = os.path.join(current_path, file_name)
     try:
-        if not file.filename.endswith(".pdf"):
+        if not file_path.endswith(".pdf"):
             return {
                 "success": False,
                 "error": "Uploaded file is not a PDF. Please upload a valid .pdf file."
             }
         # Read the file content
-        file_path=file.filename
+        
+
         with open(file_path, "wb") as f:
             f.write(await file.read())
         crew = Crew(
@@ -73,4 +87,4 @@ async def process_query(
 # Run FastAPI app using uvicorn if needed
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000,relaod=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)

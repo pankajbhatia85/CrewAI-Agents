@@ -5,7 +5,7 @@ from agents import reader_agent, search_agent, professional_writer_agent
 
 answer_customer_question_task = Task(
     description=(
-        f"""
+        """
         Answer the customer's questions based on the home inspection PDF.
         The research agent will search through the PDF to find the relevant answers.
         Your final answer MUST be clear and accurate, based on the content of the home
