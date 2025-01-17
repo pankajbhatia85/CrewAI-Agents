@@ -11,7 +11,8 @@ reader_agent= Agent(
     You ensure accurate and prompt responses.""",
     tools=[pdf_tool],
     allow_delegation=False,
-    llm=llm
+    llm=llm,
+    max_rpm=10,
     verbose=True  # Enable logging for debugging
 )
 
@@ -24,7 +25,8 @@ search_agent = Agent(
     You provide well-organized research briefs with proper citations and source verification. Your analysis include both raw data and interpreted insights, making complex information actionable and accessible.""",
     tools=[search_tool],
     allow_delegation=False,
-    llm=llm
+    llm=llm,
+    max_rpm=10,
     verbose=True  # Enable logging for debugging
 )
 
@@ -42,6 +44,7 @@ professional_writer_agent = Agent(
     ),
     tools=[],
     allow_delegation=False,
-    llm=llm
+    llm=llm,
+    max_rpm=10,
     verbose=True
 )

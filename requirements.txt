@@ -1,5 +1,8 @@
 crewai
 crewai-tools
 sentence-transformers
-dotenv
+python-dotenv
 streamlit
+fastapi
+uvicorn
+pyPDF2
