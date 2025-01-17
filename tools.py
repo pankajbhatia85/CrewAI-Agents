@@ -4,7 +4,7 @@ from crewai_tools import SerperDevTool
 import os
 
 llm = LLM(
-    model="gpt-4o",
+    model="gpt-4",
     temperature=0.8,
     max_tokens=150)
 # Initialize the tool allowing for any PDF content search if the path is provided during execution

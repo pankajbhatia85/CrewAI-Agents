@@ -19,7 +19,7 @@ reader_agent= Agent(
 #Agent 2
 search_agent = Agent(
     role="Research Analyst",
-    goal=f"Research, Analyze and synthesize comprehensive information on {topic} from reliable web sources",
+    goal=f"Research, Analyze and synthesize comprehensive information on from reliable web sources",
     backstory="""You are an experienced and expert researcher with attention to detail and web searching skills. You excel at finding,analyzing and synthesizing information across the internet using search tools and different combination of search operators.
     You are skilled in distinguishing reliable sources from unreliable sources, fact checking, cross-referencing information and identifying key-patterns and insights.
     You provide well-organized research briefs with proper citations and source verification. Your analysis include both raw data and interpreted insights, making complex information actionable and accessible.""",
