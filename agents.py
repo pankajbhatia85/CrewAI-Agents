@@ -1,13 +1,7 @@
-from crewai import Crew, Agent, Task, LLM
+from crewai import Agent,LLM
 from tools import search_tool, pdf_tool, llm
 
 
-
-
-llm = LLM(
-    model="gpt-4",
-    temperature=0.8,
-    max_tokens=150)
 
 # Agent 1
 reader_agent= Agent(
@@ -47,4 +41,7 @@ professional_writer_agent = Agent(
         """
     ),
     tools=[],
+    allow_delegation=False,
+    llm=llm
+    verbose=True
 )

@@ -20,7 +20,7 @@ answer_customer_question_task = Task(
         the content of the home inspection PDF.
         """,
     tools=[pdf_tool],
-    agent=research_agent,
+    agent=reader_agent,
 )
 
 write_email_task = Task(
