@@ -17,7 +17,6 @@ def pdf_tool_path():
     file_path = os.path.abspath(pdf_files[0])
     return file_path
 file_path=pdf_tool_path()
-
 pdf_tool = PDFSearchTool(file_path)
    
 
