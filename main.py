@@ -32,7 +32,7 @@ async def process_query(
     Endpoint to process a customer query and a PDF file.
 
     Parameters:
-    - customer_question: The question provided by the user.
+    - customer_question: The question provided by the user based on uploaded pdf.
     - file: The PDF file uploaded by the user.
 
     Returns:
