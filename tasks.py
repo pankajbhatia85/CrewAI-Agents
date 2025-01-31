@@ -1,15 +1,16 @@
 from crewai import Task
-from tools import pdf_tool,search_tool
+from tools import search_tool,pdf_tool_path,PDFSearchTool
 from agents import reader_agent, search_agent, professional_writer_agent
 
 
+file_path=pdf_tool_path()
+pdf_tool = PDFSearchTool(pdf=file_path)
 answer_customer_question_task = Task(
     description=(
         """
         Answer the customer's questions based on the home inspection PDF.
-        The research agent will search through the PDF to find the relevant answers.
-        Your final answer MUST be clear and accurate, based on the content of the home
-        inspection PDF.
+        The research agent will search through the PDF to find the relevant answers to user query.
+        Your final answer MUST be clear and accurate, based on the content of the home inspection PDF.
 
         Here is the customer's question:
         {customer_question}
@@ -27,7 +28,8 @@ write_email_task = Task(
     description=(
         """
         - Write a professional email to a contractor based 
-            on the research agent's findings.
+            on the Reader agent findings.
+        -The email must include the property address
         - The email should clearly state the issues found in the specified section 
             of the report and request a quote or action plan for fixing these issues.
         - Ensure the email is signed with the following details:

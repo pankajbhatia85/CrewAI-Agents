@@ -22,11 +22,11 @@ app = FastAPI()
 
 # Request model for structured inputs
 class CustomerQuery(BaseModel):
-    customer_question: str
+    query: str="Enter section e.g roof, kitchen,appliances to generate report..."
 
 @app.post("/process_query/")
 async def process_query(
-    customer_question: str = Form("Enter section e.g roof, kitchen,appliances to generate report..."),
+    customer_question: CustomerQuery,
     file: UploadFile = File(...)
 ):
     """
@@ -63,13 +63,13 @@ async def process_query(
         with open(file_path, "wb") as f:
             f.write(await file.read())
         crew = Crew(
-        agents=[reader_agent,search_agent,professional_writer_agent],
+        agents=[reader_agent,professional_writer_agent],
         tasks=[answer_customer_question_task, write_email_task],
         process=Process.sequential,
         )
         # Kickoff the Crew process with inputs
         result = crew.kickoff(inputs={
-            "customer_question": customer_question
+            "customer_question": customer_question.query
         })
 
         # Delete the file after processing
@@ -87,4 +87,4 @@ async def process_query(
 
 # Run FastAPI app using uvicorn if needed
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000,use_colors=True,log_level="info")

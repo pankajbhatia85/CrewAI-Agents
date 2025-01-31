@@ -6,4 +6,5 @@ streamlit
 fastapi
 uvicorn
 pyPDF2
+python-multipart
 #python==3.11.9

@@ -1,12 +1,13 @@
 from crewai import Agent
-from tools import search_tool, pdf_tool, llm
-
+from tools import search_tool, llm,pdf_tool_path,PDFSearchTool
+file_path=pdf_tool_path()
+pdf_tool = PDFSearchTool(pdf=file_path)
 # Agent 1
 reader_agent= Agent(
-    role="PDF Document Reader Agent",
+    role="Reader Agent",
     goal=f"Search through the PDF document to identify the most relevant excerpts and relevant answers",
     backstory="""You are an experienced and expert researcher with attention to detail and adept at searching and extracting relevant excerpts or data from a document.
-    You ensure accurate and prompt responses.""",
+    You ensure accurate and detailed responses.""",
     tools=[pdf_tool],
     allow_delegation=False,
     llm=llm,
@@ -31,7 +32,7 @@ search_agent = Agent(
 #Agent 3
 professional_writer_agent = Agent(
     role="Professional Writer",
-    goal="Write professional emails based on the research agent's findings",
+    goal="Write professional emails based on the research agent findings",
     allow_delegation=False,
     verbose=True,
     backstory=(
