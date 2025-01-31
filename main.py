@@ -22,11 +22,11 @@ app = FastAPI()
 
 # Request model for structured inputs
 class CustomerQuery(BaseModel):
-    query: str="Enter section e.g roof, kitchen,appliances to generate report..."
+    query: str="Enter section e.g roof, kitchen,appliances to generate report"
 
 @app.post("/process_query/")
 async def process_query(
-    customer_question: CustomerQuery,
+    customer_question: str = Form("Enter section e.g roof, kitchen,appliances to generate report..."),
     file: UploadFile = File(...)
 ):
     """
@@ -69,7 +69,7 @@ async def process_query(
         )
         # Kickoff the Crew process with inputs
         result = crew.kickoff(inputs={
-            "customer_question": customer_question.query
+            "customer_question": customer_question
         })
 
         # Delete the file after processing
