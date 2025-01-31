@@ -1,6 +1,9 @@
 # CrewAI for Agentic AI
 
 This repository demonstrates the use of **CrewAI** for implementing an Agentic AI workflow. The project is built in Python 3.11.9 and uses OpenAI embeddings for query handling and email generation. It includes a multi-agent process for managing PDF files, chunking, embedding, and query handling with fallback mechanisms. 
+The agents are as follow:
+1. Agent1 reads a pdf report on house inspection [example_home_inspection.pdf](https://github.com/user-attachments/files/18613507/example_home_inspection.pdf)
+2. Agent2 based on the user query (on what section e.g., roof, kitchen, internal, external, appliances) of the report email is send to the contractor 
 
 ---
 
