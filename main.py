@@ -1,6 +1,6 @@
 from crewai import Crew,Process
 from crewai_tools import SerperDevTool
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 #from tools import pdf_tool,search_tool,llm
 from tasks import answer_customer_question_task,write_email_task
 from agents import reader_agent, search_agent, professional_writer_agent
@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from typing import Optional
 import uvicorn
 import os
-#load_dotenv()
+load_dotenv()
 OPENAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 #customer_question = input(
