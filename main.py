@@ -1,14 +1,15 @@
 from crewai import Crew,Process
 from crewai_tools import SerperDevTool
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 #from tools import pdf_tool,search_tool,llm
 from tasks import answer_customer_question_task,write_email_task
 from agents import reader_agent, search_agent, professional_writer_agent
 from fastapi import FastAPI, File, UploadFile, Form
 from pydantic import BaseModel
 from typing import Optional
+import uvicorn
 import os
-load_dotenv()
+#load_dotenv()
 OPENAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 #customer_question = input(
@@ -25,7 +26,7 @@ class CustomerQuery(BaseModel):
 
 @app.post("/process_query/")
 async def process_query(
-    customer_question: str = Form("Enter which part of the house you like to generate report for e.g roof, kitchen,appliances..."),
+    customer_question: str = Form("Enter section e.g roof, kitchen,appliances to generate report..."),
     file: UploadFile = File(...)
 ):
     """
@@ -86,5 +87,4 @@ async def process_query(
 
 # Run FastAPI app using uvicorn if needed
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
