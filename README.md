@@ -1,13 +1,14 @@
 # CrewAI for Agentic AI
 
-This repository demonstrates the use of **CrewAI** for implementing an Agentic AI workflow. The project is built in Python 3.11.9 and uses OpenAI embeddings and Serper for query handling and email generation. It includes a multi-agent process for managing PDF files, chunking, embedding, and query handling with fallback mechanisms. 
+This repository demonstrates the use of **CrewAI** for implementing an Agentic AI workflow. The project is built in Python 3.11.9 and uses OpenAI embeddings for query handling and email generation. It includes a multi-agent process for managing PDF files, chunking, embedding, and query handling with fallback mechanisms. 
 
 ---
 
 ## Features
 
 1. **PDF Upload and Processing**
-   - The first agent allows users to upload a PDF file.
+   - The first agent allows users to upload a PDF file. ** [example_home_inspection.pdf](https://github.com/user-attachments/files/18613507/example_home_inspection.pdf)
+
    - CrewAI's PDF tool is used to chunk and embed the document using OpenAI embeddings.
 
 2. **ChromaDB Storage**
@@ -15,10 +16,9 @@ This repository demonstrates the use of **CrewAI** for implementing an Agentic A
 
 3. **Query Handling with Fallback**
    - Queries are first served by the PDF tool based on the stored embeddings.
-   - If a query cannot be handled by the PDF tool, the Serper API (https://serper.dev/api-key) is utilized by the second agent to provide results.
 
 4. **Email Generation**
-   - A third agent automatically generates an email based on the processed query and response.
+   - A second agent automatically generates an email based on the processed query and response.
 
 ---
 
@@ -27,8 +27,7 @@ This repository demonstrates the use of **CrewAI** for implementing an Agentic A
 1. **API Keys**:
    - Obtain your API keys for:
      - OpenAI: [OpenAI API Key](https://platform.openai.com/)
-     - Serper: [Serper API Key](https://serper.dev/api-key)
-
+     
 2. **Dependencies**:
    - All required Python dependencies are listed in the `requirements.txt` file. Install them with:
      ```bash
@@ -73,7 +72,7 @@ This repository demonstrates the use of **CrewAI** for implementing an Agentic A
 
 3. **Query the PDF**:
    - Input your query. The agent will:
-     - Retrieve answers from the embedded PDF using ChromaDB.
+     - Retrieve answers from the embedded PDF using ChromaDB. [example_home_inspection.pdf](https://github.com/user-attachments/files/18613507/example_home_inspection.pdf)
      - Fallback to the Serper API if the query cannot be resolved by the PDF tool.
 
 4. **Email Generation**:
@@ -102,7 +101,6 @@ crewai-agentic-ai/
 - **Python 3.11.9**
 - **CrewAI** for Agentic AI workflows
 - **OpenAI API** for embeddings
-- **Serper API** for search queries
 - **ChromaDB** for embedding storage and retrieval
 
 ---
