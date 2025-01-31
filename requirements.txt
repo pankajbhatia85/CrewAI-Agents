@@ -6,5 +6,4 @@ streamlit
 fastapi
 uvicorn
 pyPDF2
-dotenv
 #python==3.11.9
