@@ -25,7 +25,7 @@ class CustomerQuery(BaseModel):
 
 @app.post("/process_query/")
 async def process_query(
-    customer_question: str = Form(...),
+    customer_question: str = Form("Enter which part of the house you like to generate report for e.g roof, kitchen,appliances..."),
     file: UploadFile = File(...)
 ):
     """

@@ -1,8 +1,6 @@
 from crewai import Agent
 from tools import search_tool, pdf_tool, llm
 
-
-
 # Agent 1
 reader_agent= Agent(
     role="PDF Document Reader Agent",
